@@ -1,0 +1,57 @@
+body {
+    background: blue; 
+    }
+page {
+background: white;
+display: block;
+margin: 0 auto;
+margin-bottom: 0.5cm;
+box-shadow: 0 0 0.5cm rgba(0,0,0,0.5);
+}
+page[size="A4"] {  
+width: 24cm;
+height: 40cm; 
+}
+@media print {
+body, page {
+    margin: 0;
+    box-shadow: 0;
+}
+}
+.school_badge {
+    width:170px;
+}
+.school_name {
+    font-size: 33px;
+}
+.text_color {
+    color:blue;
+}
+
+.terminal_report {
+    color: green;
+    text-decoration: underline;
+}
+
+.special_table {
+    border: 1px solid blue;
+    color: blue; 
+}
+
+.stud_name {
+   color:green;
+}
+
+.table, th, td {
+    border: 1px solid green;
+    color: green;
+}
+.special_table {
+    border: 1px solid blue;
+    color: blue; 
+}
+td {
+    padding-left: 10px;
+    color: blue;
+}
+
