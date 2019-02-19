@@ -4,9 +4,30 @@
     <!-- Bootstrap -->
     <link href="vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="build/css/report.css"    rel="stylesheet">
+
+
+    <style type="text/css">
+
+@media print
+{
+.noprint {display:none;}
+
+}
+
+
+
+@media screen
+{
+
+}
+
+
+</style>
+
+
    </head>
    <body>
-        <page size="A4">
+        <page size="A4" id="mypage">
             <div class="container">
                 <div class="row">
                     <div class="col-md-2">
@@ -314,5 +335,8 @@
 
 
         </page>
+       <div>
+        <input  class="noprint" type="button" value="print" onclick="window.print()"; />
+       </div>
    </body>
 </html>
