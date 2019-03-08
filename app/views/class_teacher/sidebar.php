@@ -26,11 +26,11 @@
                 <h3>Perform Operations</h3>
                 <ul class="nav side-menu">
                   <li><a><i class="fa fa-home"></i> Home </a></li>
-                  <?php if($_SESSION['usertype'] == "class_teacher"){
+                  <?php if($_SESSION['class_teacher_of'] == "Yes"){
                       echo '<li><a><i class="fa fa-group"></i> Students <span class="fa fa-chevron-down"></span></a>
                       <ul class="nav child_menu">
                         <li><a href="add_student.php"><i class="fa fa-plus-circle"></i> Add Student</a></li>
-                        <li><a href="view_all_students.php"><i class="fa fa-eye"></i> View Students</a></li>
+                        <li><a href="edit_student.php"><i class="fa fa-eye"></i> View Students</a></li>
                       </ul>
                     </li>';
                   }

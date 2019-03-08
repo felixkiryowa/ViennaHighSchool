@@ -41,7 +41,8 @@
                   </li> -->
                   <li><a><i class="fa fa-book"></i>Subjects<span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="add_subject.php"><i class="fa fa-plus-circle"></i> Add Subject</a></li>
+                      <li><a href="add_O_subject.php"><i class="fa fa-plus-circle"></i> Add 'O' Subjects</a></li>
+                      <li><a href="#"><i class="fa fa-plus-circle"></i> Add 'A' Subjects</a></li>
                       <li><a href="form_advanced.html"><i class="fa fa-eye"></i> View Subjects</a></li>
                     </ul>
                   </li>

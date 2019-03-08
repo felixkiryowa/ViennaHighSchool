@@ -38,6 +38,7 @@
 
     <!-- Custom Theme Style -->
     <link href="../css/build/css/custom.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="../css/multiselect/multi-select.css">
   </head>
 
   <body class="nav-md">
@@ -110,7 +111,13 @@
 
     <!-- Custom Theme Scripts -->
     <script src="../css/build/js/custom.min.js"></script>
+<<<<<<< HEAD
 	
     <script src="../js/class_teacher/add_teacher.js"></script>
+=======
+    <script src="../js/multiselect/jquery.multi-select.js"></script>
+    <script src="../js/class_teacher/add_teacher.js"></script>
+ 
+>>>>>>> f3e5c3609bfe03bb6bb307f9c85dc204540db58e
   </body>
 </html>

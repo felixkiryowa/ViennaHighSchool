@@ -42,6 +42,17 @@ if (isset($_POST["create_teacher"])) {
     $userstatus = $_POST['userstatus'];
 
     $create_user = new User($firstname, $lastname, $othername, $username, $email, $password, $userrole, $userstatus);
+    $teaches_class = $_POST['teaches_class'];
+    $class_teacher_of = $_POST['class_teacher_of'];
+    $subject_list = $_POST['subject_list'];
+   
+    if(empty($class_teacher_of)){
+        $create_user = new User($firstname, $lastname, $othername, $username, $email, $password, $userrole, $userstatus, json_encode($teaches_class), "not_applicable", json_encode($subject_list));
+    }
+    else{
+        $create_user = new User($firstname, $lastname, $othername, $username, $email, $password, $userrole, $userstatus, json_encode($teaches_class), json_encode($class_teacher_of), json_encode($subject_list));
+    }
+   
     if($create_user == true){
         $message="Teacher added successfully";
 		echo json_encode('<div class="alert alert-success alert-dismissible" role="alert">'.'<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>'.'<strong> <span class="glyphicon glyphicon-ok-sign"></span> </strong>'.$message.'</div>');

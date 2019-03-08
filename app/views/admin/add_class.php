@@ -110,6 +110,6 @@
 
     <!-- Custom Theme Scripts -->
     <script src="../css/build/js/custom.min.js"></script>
-    <script src="../js/class_teacher/add_teacher.js"></script>
+    <script src="../js/class_teacher/add_class.js"></script>
   </body>
 </html>

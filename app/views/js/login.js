@@ -37,9 +37,9 @@ $(document).ready(function() {
                             window.location.href = 'app/views/admin/admin_dashboard.php';
                         }
                         else{
-                            window.location.href = 'app/views/class_teacher/class_teacher_dashboard.php';
+                            window.location.href = 'app/views/class_teacher/authorization_level.php';
                         }
-                        
+                        // alert(response.usertype);
                     
                     }else{
                         $("form").trigger("reset");

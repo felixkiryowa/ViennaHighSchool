@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <?php
+  <?php
         session_start();
         if(!$_SESSION['loggedin'])
         {
@@ -16,9 +16,9 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="icon" href="images/vienna.jpg">
+    <link rel="icon" href="../images/vienna.jpg">
 
-    <title>Admin Dashboard </title>
+    <title>Class Teacher </title>
 
     <!-- Bootstrap -->
     <link href="../css/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -38,24 +38,27 @@
 
     <!-- Custom Theme Style -->
     <link href="../css/build/css/custom.min.css" rel="stylesheet">
+
+    <!-- events calendar -->
+    <link rel="stylesheet" href="../css/build/calendar/css/fullcalendar.css" />
   </head>
 
   <body class="nav-md">
     <div class="container body">
       <div class="main_container">
            <?php 
-               require_once("layout/sidebar.php");
+               require_once("sidebar.php");
            ?>
 
         <!-- top navigation -->
            <?php
-               require_once("layout/top_navigation.php");
+               require_once("top_navigation.php");
            ?>
         <!-- /top navigation -->
 
         <!-- page content -->
            <?php
-              require_once("layout/page_content/subjects/add_subject_content.php");
+              require_once("page_content.php");
            ?>
         <!-- /page content -->
 
@@ -87,7 +90,7 @@
     <!-- iCheck -->
     <script src="../css/vendors/iCheck/icheck.min.js"></script>
     <!-- Skycons -->
-    <script src="../vendors/skycons/skycons.js"></script>
+    <script src="../css/vendors/skycons/skycons.js"></script>
     <!-- Flot -->
     <script src="../css/vendors/Flot/jquery.flot.js"></script>
     <script src="../css/vendors/Flot/jquery.flot.pie.js"></script>
@@ -107,9 +110,14 @@
     <!-- bootstrap-daterangepicker -->
     <script src="../css/vendors/moment/min/moment.min.js"></script>
     <script src="../css/vendors/bootstrap-daterangepicker/daterangepicker.js"></script>
+    <script src="../css/build/calendar/js/jquery-ui.min.js"></script>
+    <script src="../css/build/calendar/js/moment.min.js"></script>
+    <script src="../css/build/calendar/js/fullcalendar.min.js"></script>
+    <!-- js calendar events -->
+    <script src="../css/build/calendar/js/handle_events.js"></script>
 
     <!-- Custom Theme Scripts -->
     <script src="../css/build/js/custom.min.js"></script>
-    <script src="../js/class_teacher/add_subject.js"></script>
+	
   </body>
 </html>

@@ -55,7 +55,7 @@
 
         <!-- page content -->
            <?php
-              require_once("layout/page_content/subjects/add_subject_content.php");
+              require_once("layout/page_content/subjects/add_O_subject_content.php");
            ?>
         <!-- /page content -->
 

@@ -54,11 +54,8 @@
                 <button class="btn btn-info btn-block btn-lg submit">Log in</button>
               </div>
 
-              <div class="clearfix"></div>
-              <br/>
-              <br/>
-              <div class="separator">
 
+              <div class="separator">
                 <div class="clearfix"></div>
                 <br />
                 <br />
