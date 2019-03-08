@@ -1,0 +1,111 @@
+body {
+    background: blue; 
+    }
+page {
+background: white;
+display: block;
+margin: 0 auto;
+margin-bottom: 0.5cm;
+box-shadow: 0 0 0.5cm rgba(0,0,0,0.5);
+}
+
+page[size="A4"] {  
+width: 22.7cm;
+height: 34cm; 
+}
+
+@media print {
+    .highlited {
+      -webkit-print-color-adjust: exact;
+    }
+  } 
+
+.school_badge {
+    width:170px;
+}
+.school_name {
+    font-size: 23px;
+    text-align: center;
+}
+.text_color {
+    color:blue;
+}
+
+.terminal_report {
+    color: green;
+    text-decoration: underline;
+}
+
+.special_table {
+    border: 1px solid blue;
+    color: blue; 
+}
+
+.stud_name {
+   color:green;
+}
+
+.table, th, td {
+    border: 1px solid green;
+    color: green;
+}
+.special_table {
+    border: 1px solid blue;
+    color: blue; 
+}
+td {
+    padding-left: 10px;
+    color: blue;
+}
+
+.grid > div {
+    /* background: #eee; */
+    /* padding: 1em; */
+
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: 10% 20% 37% 33%;
+    
+    /* grid-gap: 1em; */
+}
+
+.stud_info > div {
+    /* padding: 1em; */
+    
+}
+
+.stud_info {
+    display: grid;
+    grid-template-columns:10% 60% 30%;
+}
+
+.stud_performance {
+    display: grid;
+    grid-template-columns: 10% 30% 30% 30%;
+}
+
+.stud_performance > div {
+    /* padding: 1em; */
+}
+
+.table_marks {
+    display: grid;
+    grid-template-columns: 5% 80% 10%;
+}
+
+.table_marks > div {
+       
+}
+
+.confidential_info   {
+    display:grid;
+    grid-template-columns: 5% 90% 5%;
+}
+
+
+.confidential_info > div {
+      
+}
+
