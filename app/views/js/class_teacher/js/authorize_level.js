@@ -1,6 +1,6 @@
 $(document).ready(function() {
     $.ajax({
-        url : 'http://localhost/viennaHighSchool/app/controllers/AuthorizeUser.php',
+        url : '../../controllers/AuthorizeUser.php',
         type : 'GET',
         dataType : 'json',
         success:function(response) {
