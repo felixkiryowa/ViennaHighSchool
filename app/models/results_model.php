@@ -38,21 +38,36 @@ class Results
             $this -> $class_id = $class_id;
             $this -> $specific_student_id = $specific_student_id;
             $this -> $subject_id = $subject_id;
-            $sql_query = "INSERT INTO results (mid_term_mark,class_id,student_id,subject_id,mot_status) VALUES ('".$this->$student_mark."', '".$this -> $class_id."','".$this -> $specific_student_id."','".$this -> $subject_id."','1')";
-        
-            $register_results_query = $connection->query($sql_query);
-            
-            if($register_results_query === TRUE) {
-                $validator['success'] = true;
-                $validator['messages'] = "Successfully Added Student Mark";
-            } else {
-                $validator['success'] = false;
-                $validator['messages'] = "Error while adding the Student Mark";
-            }
-            // close the database connection
-            $connection->close();
 
-            echo json_encode($validator);
+            $check_if_student_mot_mark_exists = "SELECT * FROM results WHERE student_id ='$specific_student_id' AND subject_id = '$subject_id' 
+            AND mid_term_mark !== null";
+        
+            $execute_query = $connection -> query($check_if_student_mot_mark_exists);
+            $response = mysqli_fetch_array($execute_query);
+            if($response == true) {
+
+                $sql_query = "INSERT INTO results (mid_term_mark,class_id,student_id,subject_id,mot_status) VALUES ('".$this->$student_mark."', '".$this -> $class_id."','".$this -> $specific_student_id."','".$this -> $subject_id."','1')";
+
+                $register_results_query = $connection->query($sql_query);
+                
+                if($register_results_query === TRUE) {
+                    $validator['success'] = true;
+                    $validator['messages'] = "Successfully Added Student Mid Term  Mark";
+                } else {
+                    $validator['success'] = false;
+                    $validator['messages'] = "Error while adding the Student Mark";
+                }
+                // close the database connection
+                $connection->close();
+
+                echo json_encode($validator);
+    
+            }else {
+                $validator['success'] = false;
+                $validator['messages'] = "Mid Term Student Mark is Already Added!!";
+                echo json_encode($validator);
+            }
+
         }
         else {
             
@@ -61,18 +76,34 @@ class Results
             $this -> $class_id = $class_id;
             $this -> $specific_student_id = $specific_student_id;
             $this -> $subject_id = $subject_id;
-            $register_results_query = $connection -> query("INSERT INTO results (end_term_mark,class_id, student_id, subject_id,mot_status) VALUES ('".$this -> $student_mark."', '".$this -> $class_id."','".$this -> $specific_student_id."','".$this -> $subject_id."','1')"); 
-            if($register_results_query === TRUE) {
-                $validator['success'] = true;
-                $validator['messages'] = "Successfully Added Student Mark";
-            } else {
-                $validator['success'] = false;
-                $validator['messages'] = "Error while adding the Student Mark";
-            }
-            // close the database connection
-            $connection->close();
 
-            echo json_encode($validator);
+            $check_if_student_mot_mark_exists = "SELECT * FROM results WHERE student_id ='$specific_student_id' AND subject_id = '$subject_id' 
+            AND end_term_mark !== null";
+        
+            $execute_query = $connection -> query($check_if_student_mot_mark_exists);
+            $response = mysqli_fetch_array($execute_query);
+
+            if($response == true) {
+                $register_results_query = $connection -> query("INSERT INTO results (end_term_mark,class_id, student_id, subject_id,mot_status) VALUES ('".$this -> $student_mark."', '".$this -> $class_id."','".$this -> $specific_student_id."','".$this -> $subject_id."','1')"); 
+                if($register_results_query === TRUE) {
+                    $validator['success'] = true;
+                    $validator['messages'] = "Successfully Added Student Mark";
+                } else {
+                    $validator['success'] = false;
+                    $validator['messages'] = "Error while adding the Student Mark";
+                }
+                // close the database connection
+                $connection->close();
+    
+                echo json_encode($validator);
+
+            }else {
+
+                $validator['success'] = false;
+                $validator['messages'] = "End Term Student Mark is Already Added!!";
+                echo json_encode($validator);
+
+            }
 
         }
     }

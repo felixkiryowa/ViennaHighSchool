@@ -108,6 +108,9 @@ function Add_Student_Mark_Datatable() {
     var mark_category = $("#mark_category").val();
     var specific_student_id = $("#specific_student_id").val();
 
+    var error_above_100 = "Student Mark Can not Be Above 100";
+    var error_below_0 = "Student Mark Can not Be Below 0";
+
 
     if(student_mark == "") {
       $("#student_mark").closest('.form-group').addClass('has-error');
@@ -126,36 +129,55 @@ function Add_Student_Mark_Datatable() {
 
     if(student_mark && mark_category) {
 
-      var add_student_mark = "add_student_mark";
-      console.log({specific_student_id:specific_student_id,student_mark:parseInt(student_mark),
-        add_student_mark:add_student_mark,mark_category:mark_category});
+      if(student_mark > 100) {
 
-      $.ajax({
-          url:"../../controllers/Results.php",
-          method:"POST",
-          data: {specific_student_id:specific_student_id,student_mark:parseInt(student_mark),
-            add_student_mark:add_student_mark,mark_category:mark_category},
-          dataType: 'json',
-          success: function(response) {
+        $(".Add_marks_messages").html('<div class="alert alert-warning alert-dismissible" role="alert">'+
+        '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>'+
+        '<strong> <span class="glyphicon glyphicon-exclamation-sign"></span> </strong>'+error_above_100+
+      '</div>');
+           
+      }else if(student_mark < 0) {
 
-            console.log(response.success);
+          
+        $(".Add_marks_messages").html('<div class="alert alert-warning alert-dismissible" role="alert">'+
+        '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>'+
+        '<strong> <span class="glyphicon glyphicon-exclamation-sign"></span> </strong>'+error_below_0+
+      '</div>');
 
-            if(response.success == true) { 
-              $(".Add_marks_messages").html('<div class="alert alert-success alert-dismissible" role="alert">'+
-              '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>'+
-              '<strong> <span class="glyphicon glyphicon-ok-sign"></span> </strong>'+response.messages+
-             '</div>');
+      }else {
 
-            }else {
-              $(".Add_marks_messages").html('<div class="alert alert-warning alert-dismissible" role="alert">'+
-                  '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>'+
-                  '<strong> <span class="glyphicon glyphicon-exclamation-sign"></span> </strong>'+response.messages+
-                '</div>');
-
+        var add_student_mark = "add_student_mark";
+        console.log({specific_student_id:specific_student_id,student_mark:parseInt(student_mark),
+          add_student_mark:add_student_mark,mark_category:mark_category});
+  
+        $.ajax({
+            url:"../../controllers/Results.php",
+            method:"POST",
+            data: {specific_student_id:specific_student_id,student_mark:parseInt(student_mark),
+              add_student_mark:add_student_mark,mark_category:mark_category},
+            dataType: 'json',
+            success: function(response) {
+  
+              console.log(response.success);
+  
+              if(response.success == true) { 
+                $(".Add_marks_messages").html('<div class="alert alert-success alert-dismissible" role="alert">'+
+                '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>'+
+                '<strong> <span class="glyphicon glyphicon-ok-sign"></span> </strong>'+response.messages+
+               '</div>');
+  
+              }else {
+                $(".Add_marks_messages").html('<div class="alert alert-warning alert-dismissible" role="alert">'+
+                    '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>'+
+                    '<strong> <span class="glyphicon glyphicon-exclamation-sign"></span> </strong>'+response.messages+
+                  '</div>');
+  
+              }
+  
             }
+        })
 
-          }
-      })
+      }
 
     }else {
       return false;
