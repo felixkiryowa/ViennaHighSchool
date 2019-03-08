@@ -2515,7 +2515,9 @@ if (typeof NProgress != 'undefined') {
 						  className: "btn-sm"
 						},
 					  ],
-					  responsive: true
+						responsive: true,
+						"ajax": "../controllers/User.php",
+        	"order": []
 					});
 				  }
 				};
