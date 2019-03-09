@@ -37,38 +37,17 @@
     <link href="../css/vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
 
     <!-- Custom Theme Style -->
-    <link href="../css/build/css/custom.min.css" rel="stylesheet">>
-    <!-- o level report css -->
-    <!-- <link rel="stylesheet" href="../css/build/css/report.css" /> -->
-    <link rel="stylesheet" href="../css/build/css/alevelreport.css" />
-
-
-
-    <style>
-	      
-        @media screen {
-          #printSection {
-            display: none;
-          }
-        }
-    
-        @media print {
-          body * {
-          visibility:hidden;
-          }
-          #printSection, #printSection * {
-          visibility:visible;
-          }
-          #printSection {
-          position:absolute;
-          left:0;
-          top:0;
-          }
-        }
-      </style>
-
-
-
+    <link href="../css/build/css/custom.min.css" rel="stylesheet">
+	
+	
+		
+    <!-- Datatables -->
+    <link href="../css/vendors/datatables.net-bs/css/dataTables.bootstrap.min.css" rel="stylesheet">
+    <link href="../css/vendors/datatables.net-buttons-bs/css/buttons.bootstrap.min.css" rel="stylesheet">
+    <link href="../css/vendors/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css" rel="stylesheet">
+    <link href="../css/vendors/datatables.net-responsive-bs/css/responsive.bootstrap.min.css" rel="stylesheet">
+    <link href="../css/vendors/datatables.net-scroller-bs/css/scroller.bootstrap.min.css" rel="stylesheet">
+	
   </head>
 
   <body class="nav-md">
@@ -85,98 +64,68 @@
         <!-- /top navigation -->
 
         <!-- page content -->
-           <!-- page content -->
         <div class="right_col" role="main">
-          <!-- top tiles -->
-          <?php 
-              require_once("top_tiles.php");
-          ?>
-          <!-- /top tiles -->
+                <!-- top tiles -->
+                <?php 
+                    require_once("top_tiles.php");
+                ?>
+                <!-- /top tiles -->
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+					   <div class="x_content">
+              <table  class="table table-striped table-bordered" id="GetAllStudentsAndEdit">
+                <thead>
+                <tr>
+                  <th>StuDNo</th>
+                  <th>Firstname</th>
+                  <th>Lastname</th>
+                  <th>Mid Of Term Mark</th>
+                  <th>End Of Term Mark</th>
+                  <th>Edit Student Marks</th>
+                </tr>
+                </thead>
+              </table>
+            </div>					
+            </div>
+          </div>
+          <br />
 
-					<div class="row">
-						 <div class="col-md-12 col-sm-12 col-xs-12">
-							<div class="x_content">
-								<table id="datatable-buttons" class="table table-striped table-bordered" style="border:None; color:">
-								  <thead>
-									<tr>
-									  <th>Firstname</th>
-									  <th>Lastname</th>
-									  <th>Physics</th>
-                    <th>Edit Mark</th>
-									</tr>
-								  </thead>
-								  <tbody>
-									<tr>
-									  <td>Jonnah</td>
-									  <td>Kazibwe</td>
-                    <td>72</td>
-									  <td><button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#PrintReport"><i class="fa fa-eye">Report Preview</button></td>
-									</tr>
-                  <tr>
-									  <td>Julia</td>
-									  <td>Nakyejwe</td>
-                    <td>56</td>
-									  <td><button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#PrintAlevelReport"><i class="fa fa-eye">Report Preview</button></td>
-									</tr>
-								  </tbody>
-								</table>
-							</div>
-						</div>
-					</div>
-					<br />
-
-                        <!-- end of weather widget -->
-				 </div>
-				</div>
-        </div>
-           </div>
-        <!-- /page content -->
-        <!-- /page content -->
-
-        <!-- olevel report  modal -->
-        <div class="modal fade" style="padding-top: 5px;overflow:scroll;" tabindex="-1" role="dialog" id="PrintReport">
-              <div class="modal-dialog modal-lg" role="document">
-              <div class="modal-content">
-              <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title"><li class="fa fa-print"></li>  Report For Jonnah Kazibwe</h4>
+                <!-- end of weather widget -->
+          </div>
+          </div>
               </div>
-
-              <div class="modal-body">
-                  <?php require_once("./reportolevel.php"); ?>
+          </div>
+      <!-- /page content -->
+		<div class="modal fade" style="padding-top: 125px;" tabindex="-1" role="dialog" id="EditStudentMark">
+		   <div class="modal-dialog" role="document">
+			  <div class="modal-content">
+			 <div class="modal-header">
+				 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				 <h4 align="center" class="modal-title">Student Name : <b id="student_name" style="color:#2A3F54;"></b></h4>
+			 </div>
+			<form class="form-horizontal">
+			  <div class="modal-body">
+				  <div class="edit_marks_messages"></div>
+          <div class="form-group" id="midoftermdiv">
+              <label for="edit_mot_marks" class="col-sm-2 control-label">MOT Mark</label>
+              <div class="col-sm-10">
+                 <input type="number" class="form-control" id="edit_student_mot_mark" name="edit_student_mot_mark" placeholder="Enter student MOT mark">
               </div>
-
-              <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button class="btn btn-primary"  id="btnPrint">Print</button>
+				  </div>
+          <div class="form-group" id="endoftermdiv">
+              <label for="edit_eot_marks" class="col-sm-2 control-label">EOT Mark</label>
+              <div class="col-sm-10">
+                 <input type="number" class="form-control" id="edit_student_eot_mark" name="edit_student_eot_mark" placeholder="Enter student EOT mark">
               </div>
-        
-            </div><!-- /.modal-content -->
-            </div><!-- /.modal-dialog -->
-        </div><!-- /olevel report modal -->
-
-          <!-- alevel report  modal -->
-          <div class="modal fade" style="padding-top: 5px;overflow:scroll;" tabindex="-1" role="dialog" id="PrintAlevelReport">
-              <div class="modal-dialog modal-lg" role="document">
-              <div class="modal-content">
-              <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title"><li class="fa fa-print"></li>  Report For Julia Nakyejwe</h4>
-              </div>
-
-              <div class="modal-body">
-                  <?php require_once("./reportalevel.php"); ?>
-              </div>
-
-              <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button class="btn btn-primary"  id="btnPrint2">Print</button>
-              </div>
-        
-            </div><!-- /.modal-content -->
-            </div><!-- /.modal-dialog -->
-        </div><!-- alevel report modal -->
-
+				  </div> 
+			</div>
+			<div class="modal-footer  EditspecificStudentID">
+				<button id="save_student_mark" class="btn btn-primary">Save Mark</button>
+			</div>
+		  </form>
+		 </div><!-- /.modal-content -->
+		 </div><!-- /.modal-dialog -->
+		</div><!-- /.modal -->
         <!-- footer content -->
         <footer>
           <div class="pull-right">
@@ -216,49 +165,9 @@
     <script src="../css/vendors/jszip/dist/jszip.min.js"></script>
     <script src="../css/vendors/pdfmake/build/pdfmake.min.js"></script>
     <script src="../css/vendors/pdfmake/build/vfs_fonts.js"></script>
-  
-
-    <script>
-	   
-		document.getElementById("btnPrint").onclick = function() {
-			printElement(document.getElementById("printThisOlevelReport"));
-			//printElement(document.getElementById("printThisToo"), true, "<hr />");
-			window.print();
-    }
     
-    document.getElementById("btnPrint2").onclick = function() {
-			printElement(document.getElementById("printThisAlevelReport"));
-			//printElement(document.getElementById("printThisToo"), true, "<hr />");
-			window.print();
-    }
-    
+    <script src="../js/class_teacher/js/student_results.js"></script>
 
-	   function printElement(elem, append, delimiter) {
-			var domClone = elem.cloneNode(true);
-
-			var $printSection = document.getElementById("printSection");
-
-			if (!$printSection) {
-				var $printSection = document.createElement("div");
-				$printSection.id = "printSection";
-				document.body.appendChild($printSection);
-			}
-			if (append !== true) {
-				$printSection.innerHTML = "";
-			}
-
-			else if (append === true) {
-				if (typeof(delimiter) === "string") {
-					$printSection.innerHTML += delimiter;
-				}
-				else if (typeof(delimiter) === "object") {
-					$printSection.appendChlid(delimiter);
-				}
-			}
-
-			$printSection.appendChild(domClone);
-		}
-	</script>
 
     <!-- Custom Theme Scripts -->
     <script src="../css/build/js/custom.min.js"></script>
