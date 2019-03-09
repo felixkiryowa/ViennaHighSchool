@@ -40,18 +40,23 @@ if (isset($_POST["create_teacher"])) {
     $password = $_POST['password'];
     $userrole = $_POST['userrole'];
     $userstatus = $_POST['userstatus'];
-
-    $create_user = new User($firstname, $lastname, $othername, $username, $email, $password, $userrole, $userstatus);
     $teaches_class = $_POST['teaches_class'];
     $class_teacher_of = $_POST['class_teacher_of'];
     $subject_list = $_POST['subject_list'];
-   
-    if(empty($class_teacher_of)){
-        $create_user = new User($firstname, $lastname, $othername, $username, $email, $password, $userrole, $userstatus, json_encode($teaches_class), "not_applicable", json_encode($subject_list));
+    echo json_encode($class_teacher_of);
+
+    if(userrole == "admin"){
+        $create_user = new User($firstname, $lastname, $othername, $username, $email, $password, $userrole, $userstatus, $teaches_class, "N/A", $subject_list);
     }
     else{
-        $create_user = new User($firstname, $lastname, $othername, $username, $email, $password, $userrole, $userstatus, json_encode($teaches_class), json_encode($class_teacher_of), json_encode($subject_list));
+        if($class_teacher_of != "N/A"){
+            $create_user = new User($firstname, $lastname, $othername, $username, $email, $password, $userrole, $userstatus, json_encode($teaches_class), json_encode($class_teacher_of), json_encode($subject_list));
+        }
+        else{
+            $create_user = new User($firstname, $lastname, $othername, $username, $email, $password, $userrole, $userstatus, json_encode($teaches_class), $class_teacher_of, json_encode($subject_list));
+        }
     }
+   
    
     if($create_user == true){
         $message="Teacher added successfully";

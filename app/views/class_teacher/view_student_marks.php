@@ -20,8 +20,8 @@
 
     <title>Class Teacher </title>
 
-    <!-- Bootstrap -->
-    <link href="../css/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+   <!-- Bootstrap -->
+   <link href="../css/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome -->
     <link href="../css/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <!-- NProgress -->
@@ -37,10 +37,7 @@
     <link href="../css/vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
 
     <!-- Custom Theme Style -->
-    <link href="../css/build/css/custom.min.css" rel="stylesheet">
-
-    <!-- events calendar -->
-    <link rel="stylesheet" href="../css/build/calendar/css/fullcalendar.css" />
+    <link href="../css/build/css/custom.min.css" rel="stylesheet">>
     <!-- o level report css -->
     <!-- <link rel="stylesheet" href="../css/build/css/report.css" /> -->
     <link rel="stylesheet" href="../css/build/css/alevelreport.css" />
@@ -99,7 +96,7 @@
 					<div class="row">
 						 <div class="col-md-12 col-sm-12 col-xs-12">
 							<div class="x_content">
-								<table id="datatable-buttons" class="table table-striped table-bordered">
+								<table id="datatable-buttons" class="table table-striped table-bordered" style="border:None; color:">
 								  <thead>
 									<tr>
 									  <th>Firstname</th>
@@ -192,47 +189,33 @@
     </div>
 
 
-    <!-- jQuery -->
-    <script src="../css/vendors/jquery/dist/jquery.min.js"></script>
+  
+     <!-- jQuery -->
+     <script src="../css/vendors/jquery/dist/jquery.min.js"></script>
     <!-- Bootstrap -->
     <script src="../css/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
     <!-- FastClick -->
     <script src="../css/vendors/fastclick/lib/fastclick.js"></script>
     <!-- NProgress -->
     <script src="../css/vendors/nprogress/nprogress.js"></script>
-    <!-- Chart.js -->
-    <script src="../css/vendors/Chart.js/dist/Chart.min.js"></script>
-    <!-- gauge.js -->
-    <script src="../css/vendors/gauge.js/dist/gauge.min.js"></script>
-    <!-- bootstrap-progressbar -->
-    <script src="../css/vendors/bootstrap-progressbar/bootstrap-progressbar.min.js"></script>
     <!-- iCheck -->
     <script src="../css/vendors/iCheck/icheck.min.js"></script>
-    <!-- Skycons -->
-    <script src="../css/vendors/skycons/skycons.js"></script>
-    <!-- Flot -->
-    <script src="../css/vendors/Flot/jquery.flot.js"></script>
-    <script src="../css/vendors/Flot/jquery.flot.pie.js"></script>
-    <script src="../css/vendors/Flot/jquery.flot.time.js"></script>
-    <script src="../css/vendors/Flot/jquery.flot.stack.js"></script>
-    <script src="../css/vendors/Flot/jquery.flot.resize.js"></script>
-    <!-- Flot plugins -->
-    <script src="../css/vendors/flot.orderbars/js/jquery.flot.orderBars.js"></script>
-    <script src="../css/vendors/flot-spline/js/jquery.flot.spline.min.js"></script>
-    <script src="../css/vendors/flot.curvedlines/curvedLines.js"></script>
-    <!-- DateJS -->
-    <script src="../css/vendors/DateJS/build/date.js"></script>
-    <!-- JQVMap -->
-    <script src="../css/vendors/jqvmap/dist/jquery.vmap.js"></script>
-    <script src="../css/vendors/jqvmap/dist/maps/jquery.vmap.world.js"></script>
-    <script src="../css/vendors/jqvmap/examples/js/jquery.vmap.sampledata.js"></script>
-    <!-- bootstrap-daterangepicker -->
-    <script src="../css/vendors/moment/min/moment.min.js"></script>
-    <script src="../css/vendors/bootstrap-daterangepicker/daterangepicker.js"></script>
-    <script src="../css/build/calendar/js/jquery-ui.min.js"></script>
-    <script src="../css/build/calendar/js/moment.min.js"></script>
-    <script src="../css/build/calendar/js/fullcalendar.min.js"></script>
-    <!-- js calendar events -->
+    <!-- Datatables -->
+    <script src="../css/vendors/datatables.net/js/jquery.dataTables.min.js"></script>
+    <script src="../css/vendors/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+    <script src="../css/vendors/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
+    <script src="../css/vendors/datatables.net-buttons-bs/js/buttons.bootstrap.min.js"></script>
+    <script src="../css/vendors/datatables.net-buttons/js/buttons.flash.min.js"></script>
+    <script src="../css/vendors/datatables.net-buttons/js/buttons.html5.min.js"></script>
+    <script src="../css/vendors/datatables.net-buttons/js/buttons.print.min.js"></script>
+    <script src="../css/vendors/datatables.net-fixedheader/js/dataTables.fixedHeader.min.js"></script>
+    <script src="../css/vendors/datatables.net-keytable/js/dataTables.keyTable.min.js"></script>
+    <script src="../css/vendors/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
+    <script src="../css/vendors/datatables.net-responsive-bs/js/responsive.bootstrap.js"></script>
+    <script src="../css/vendors/datatables.net-scroller/js/dataTables.scroller.min.js"></script>
+    <script src="../css/vendors/jszip/dist/jszip.min.js"></script>
+    <script src="../css/vendors/pdfmake/build/pdfmake.min.js"></script>
+    <script src="../css/vendors/pdfmake/build/vfs_fonts.js"></script>
   
 
     <script>
