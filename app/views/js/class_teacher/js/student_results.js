@@ -1,4 +1,5 @@
 Add_Student_Mark_Datatable();
+Edit_Student_Mark_Datatable();
 
 // Handle datatable for all students and add their marks
 function Add_Student_Mark_Datatable() {
@@ -69,6 +70,76 @@ function Add_Student_Mark_Datatable() {
     TableManageButtons.init();
     
   };
+
+  // Edit Student Marks
+  function Edit_Student_Mark_Datatable() {
+
+    console.log("Fake");
+          
+      if( typeof ($.fn.DataTable) === 'undefined'){ return; }
+      
+      var handleDataTableButtons = function() {
+        if ($("#GetAllStudentsAndEdit").length) {
+          $("#GetAllStudentsAndEdit").DataTable({
+    
+           "ajax": "../../controllers/EditStudentMarks.php",
+            "order": [],
+    
+            dom: "Blfrtip",
+            buttons: [
+            
+            ],
+            responsive: true
+          });
+        }
+      };
+    
+      TableManageButtons = function() {
+        "use strict";
+        return {
+          init: function() {
+            handleDataTableButtons();
+          }
+        };
+      }();
+    
+      $('#datatable').dataTable();
+    
+      $('#datatable-keytable').DataTable({
+        keys: true
+      });
+    
+      $('#datatable-responsive').DataTable();
+    
+      $('#datatable-scroller').DataTable({
+        ajax: "js/datatables/json/scroller-demo.json",
+        deferRender: true,
+        scrollY: 380,
+        scrollCollapse: true,
+        scroller: true
+      });
+    
+      $('#datatable-fixed-header').DataTable({
+        fixedHeader: true
+      });
+    
+      var $datatable = $('#datatable-checkbox');
+    
+      $datatable.dataTable({
+        'order': [[ 1, 'asc' ]],
+        'columnDefs': [
+          { orderable: false, targets: [0] }
+        ]
+      });
+      $datatable.on('draw.dt', function() {
+        $('checkbox input').iCheck({
+          checkboxClass: 'icheckbox_flat-green'
+        });
+      });
+    
+      TableManageButtons.init();
+      
+    };
 
 
   GetStudentInfo = (id)  => {
@@ -165,12 +236,17 @@ function Add_Student_Mark_Datatable() {
                 '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>'+
                 '<strong> <span class="glyphicon glyphicon-ok-sign"></span> </strong>'+response.messages+
                '</div>');
+
+               // refresh the table
+               $('#GetAllStudentsAddMarks').DataTable().ajax.reload();
+              
   
               }else {
                 $(".Add_marks_messages").html('<div class="alert alert-warning alert-dismissible" role="alert">'+
                     '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>'+
                     '<strong> <span class="glyphicon glyphicon-exclamation-sign"></span> </strong>'+response.messages+
                   '</div>');
+
   
               }
   
@@ -183,6 +259,47 @@ function Add_Student_Mark_Datatable() {
       return false;
     }
  })
+
+
+ EditStudentMarks = (id) => {
+
+     if(id) {
+
+      let editstudentresults = "editstudentresults";
+      $("#edit_specific_student_id").remove();
+
+       $.ajax({
+        url: '../../controllers/Results.php',
+        type: 'POST',
+        data: {student_id : id,editstudentresults:editstudentresults},
+        dataType: 'json',
+        success:function(response) {
+            var firstname = response.firstname;
+            var lastname = response.lastname;
+            student_name.innerHTML = lastname + " " + firstname;
+             console.log(response);
+            var endoftermdiv = document.getElementById("endoftermdiv");
+            var midoftermdiv = document.getElementById("midoftermdiv");
+             if(response.end_term_mark === null) {
+                endoftermdiv.style.display= 'none';
+                $("#edit_student_mot_mark").val(response.mid_term_mark);
+                 
+             }else if(response.mid_term_mark === null)  {
+               midoftermdiv.style.display='none';
+               $("#edit_student_eot_mark").val(response.end_term_mark);
+             }
+             else {
+              $("#edit_student_mot_mark").val(response.mid_term_mark);
+              $("#edit_student_eot_mark").val(response.end_term_mark);
+             }
+            $(".EditspecificStudentID").append('<input type="text" name="edit_specific_student_id" id="edit_specific_student_id" value="'+ response.student_id +'"/>');
+
+        }
+       });
+
+     }
+
+ }
 
 
   

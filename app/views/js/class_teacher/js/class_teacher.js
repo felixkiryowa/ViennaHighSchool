@@ -338,7 +338,6 @@ DiscontinueStudent = (id) => {
                     setInterval(() => {
                       $("#discountinueStudentModal").modal('hide');
                     }, 4000)
-                   
 
                 } else {
                     $(".DiscontinueStudentMessages").html('<div class="alert alert-warning alert-dismissible" role="alert">'+

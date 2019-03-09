@@ -172,24 +172,25 @@ public static function  get_class_students_to_add_their_marks($class_id)  {
     require('../database/db.php');
     $output = array('data' => array());
 
-        $sql = "SELECT * FROM students WHERE class_id=$class_id AND student_status != 'discountinued'";
+        $sql = "SELECT students.student_id,students.firstname,students.lastname
+        FROM students INNER JOIN results ON students.student_id = results.student_id  
+        WHERE students.class_id=$class_id AND students.student_status != 'discountinued' 
+        AND results.mot_status IS NULL OR results.eot_status IS NULL
+     ";
+
         $query = $connection->query($sql);
 
         $x = 1;
         while ($row = $query->fetch_assoc()) {
-
-
             $actionButton = '
               <button class="btn btn-primary btn-sm btn-lg" data-toggle="modal" data-target="#AddStudentMark" onclick="GetStudentInfo('.$row['student_id'].')"><span class="glyphicon glyphicon-plus-sign"></span> Add Mark</button>
              ';
-        
             $output['data'][] = array(
                 $x,
                 $row['firstname'],
                 $row['lastname'],
                 $actionButton
             );
-
             $x++;
         }
 
@@ -197,6 +198,53 @@ public static function  get_class_students_to_add_their_marks($class_id)  {
         $connection->close();
 
         echo json_encode($output); 
+}
+
+
+public static function get_class_results_to_edit($class_id) {
+    require('../database/db.php');
+    $output = array('data' => array());
+
+        $sql = "SELECT students.student_id,students.firstname,students.lastname,results.mid_term_mark,
+        results.end_term_mark
+        FROM students INNER JOIN results ON students.student_id = results.student_id  
+     ";
+
+        $query = $connection->query($sql);
+
+        $x = 1;
+        while ($row = $query->fetch_assoc()) {
+              if($row['mid_term_mark'] == null) {
+                $mid_term =  "<b style='color:red;'>Not Added Yet</b>";
+               }
+               else {
+                  $mid_term =   $row['mid_term_mark'];
+               }
+               if($row['end_term_mark'] == null) {
+                $end_term =  "<b style='color:red;'>Not Added Yet</b>";
+               }
+               else {
+                  $end_term =   $row['end_term_mark'];
+               }
+            $actionButton = '
+              <button class="btn btn-success btn-sm btn-lg" data-toggle="modal" data-target="#EditStudentMark" onclick="EditStudentMarks('.$row['student_id'].')"><span class="glyphicon glyphicon-edit"></span> Edit Mark</button>
+             ';
+            $output['data'][] = array(
+                $x,
+                $row['firstname'],
+                $row['lastname'],
+                $mid_term,
+                $end_term,
+                $actionButton
+            );
+            $x++;
+        }
+
+        // database conion close
+        $connection->close();
+
+        echo json_encode($output); 
+
 }
 
 } 

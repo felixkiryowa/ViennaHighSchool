@@ -58,17 +58,6 @@ if(isset($_POST['add_student'])) {
     function handle_discontinued_student($student_id) {
         Student::discontinue_student($student_id);          
     }
-  
-   
-}else {
-
-    get_specific_class_students($class_id);
-}
-
-
-function get_specific_class_students($class_id) {
-    Student::get_class_students($class_id);
-}
     
     
 ?>
